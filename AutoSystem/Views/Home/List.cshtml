@@ -1,0 +1,49 @@
+﻿@model AutoSystem.Models.Vehicle
+@{
+    ViewBag.Title = "List";
+    List<AutoSystem.Models.Vehicle> allVehicle = ViewBag.ListVehicle;
+}
+
+<h2>List</h2>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}
+
+<table class="table" id="tableBorder">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Value)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (AutoSystem.Models.Vehicle item in allVehicle)
+    {
+        <tr>
+            <td>
+                <p class="overflow">@Html.DisplayFor(modelItem => item.ID)</p>
+            </td>
+            <td>
+                <p class="overflow"> @Html.DisplayFor(modelItem => item.Name)</p>
+            </td>
+            <td>
+                <p class="overflow"> @Html.DisplayFor(modelItem => item.Value) </p>
+            </td>
+            <td>
+                <a href='@Url.Action("DeleteVehicle", "Home", new { vehicleID = item.ID })'>
+                    Deletar
+                </a>
+                <a href='@Url.Action("Edit", "Home", new { vehicleID = item.ID })'>
+                    Editar
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

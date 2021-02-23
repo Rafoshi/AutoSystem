@@ -1,0 +1,32 @@
+﻿@model AutoSystem.Models.Vehicle
+@{
+    ViewBag.Title = "Cadastrar Novo Veículo";
+}
+
+<main>
+    @using (Html.BeginForm("RegisterVehicle", "Home", FormMethod.Post))
+    {
+        <fieldset>
+            <legend>Dados do veículo</legend>
+
+            <div class="input-block">
+                <label for="name">Nome do Veículo</label>
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="input-block">
+                <label for="avatar">
+                    Valor do Veículo
+                </label>
+                @Html.EditorFor(model => model.Value)
+                @Html.ValidationMessageFor(m => m.Value, "", new { @class = "text-danger" })
+            </div>
+
+            <button class="sub-button" type="submit">Cadastrar</button>
+        </fieldset>
+        @section Scripts{
+            @Scripts.Render("~/bundles/jqueryval");
+        }
+    }
+</main>
