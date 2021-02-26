@@ -33,6 +33,13 @@ namespace AutoSystem.Controllers
             return View(vehicle);
         }
 
+        public ActionResult Rent()
+        {
+            Rent rent = new Rent();
+            ViewBag.ListVehicle = queries.ListVehicle();
+            return View(rent);
+        }
+
         public ActionResult DeleteVehicle(int vehicleID)
         {
             queries.DeleteVehicle(vehicleID);
@@ -53,6 +60,21 @@ namespace AutoSystem.Controllers
             queries.UpdateVehicle(vehicle);
 
             return RedirectToAction("List");
+        }
+
+        [HttpPost]
+        public ActionResult RegisterRent(Rent rent)
+        {
+            try
+            {
+                queries.RegisterRent(rent);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("RentList");
         }
     }
 }

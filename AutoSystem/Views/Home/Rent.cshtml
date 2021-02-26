@@ -1,0 +1,36 @@
+﻿@model AutoSystem.Models.Rent
+@{
+    ViewBag.Title = "Cadastrar Novo Veículo";
+    List<AutoSystem.Models.Vehicle> allVehicle = ViewBag.ListVehicle;
+}
+
+<main>
+    @using (Html.BeginForm("RegisterRent", "Home", FormMethod.Post))
+    {
+        <fieldset>
+            <legend>Dados do veículo</legend>
+
+            <div class="input-block">
+                <label for="name">Nome do Veículo</label>
+                @Html.LabelFor(model => model.VehicleID)
+                <select id="Vehicle.ID" name="Vehicle.ID" class="">
+                    @foreach (AutoSystem.Models.Vehicle item in allVehicle)
+                    {
+                        <option value="@item.ID"
+                                @if (item.ID == Model.Vehicle.ID) { @: selected
+                                }>
+                            @item.Name
+                        </option>
+                    }
+
+                </select>
+
+            </div>
+
+            <button class="sub-button" type="submit">Cadastrar</button>
+        </fieldset>
+        @section Scripts{
+            @Scripts.Render("~/bundles/jqueryval");
+        }
+    }
+</main>

@@ -22,6 +22,16 @@ namespace AutoSystem.Repostory
 
         }
 
+        public void RegisterRent(Rent rent)
+        {
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO `db_auto`.`table_rent` (`FK_VEHICLE_ID`) VALUES (@ID);", con.ConnectionDB());
+            cmd.Parameters.Add("@ID", MySqlDbType.VarChar).Value = rent.Vehicle.ID;
+
+            cmd.ExecuteNonQuery();
+            con.DisconnectDB();
+
+        }
+
         public void DeleteVehicle(int vehicleID)
         {
             MySqlCommand cmd = new MySqlCommand("DELETE FROM `db_auto`.`table_vehicles` WHERE (`VEHICLE_ID` = @ID);", con.ConnectionDB());

@@ -9,5 +9,11 @@ namespace AutoSystem.Models
     {
         public int ID { get; set; }
         public int VehicleID { get; set; }
+        public Vehicle Vehicle { get; set; }
+
+        public Rent()
+        {
+            Vehicle = new Vehicle();
+        }
     }
 }
