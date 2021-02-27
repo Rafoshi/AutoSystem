@@ -211,6 +211,7 @@
     <Content Include="Views\Home\List.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\Rent.cshtml" />
+    <Content Include="Views\Home\RentList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

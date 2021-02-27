@@ -19,6 +19,18 @@ namespace AutoSystem.Controllers
             return View(vehicle);
         }
 
+        public ActionResult RentList(Rent rent)
+        {
+            ViewBag.ListRent = queries.RentListVehicle();
+
+            return View(rent);
+        }
+        public ActionResult DeleteRent(int rentID)
+        {
+            queries.DeleteRent(rentID);
+            return RedirectToAction("RentList");
+        }
+
         public ActionResult List()
         {
             ViewBag.ListVehicle = queries.ListVehicle();

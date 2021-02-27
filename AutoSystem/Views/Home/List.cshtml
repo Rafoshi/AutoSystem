@@ -23,6 +23,11 @@
         </th>
         <th></th>
     </tr>
+
+    @{ 
+        int itemID = 0;
+    }
+
     @foreach (AutoSystem.Models.Vehicle item in allVehicle)
     {
         <tr>
@@ -44,6 +49,7 @@
                 </a>
             </td>
         </tr>
+        itemID = item.ID;
     }
 
 </table>
