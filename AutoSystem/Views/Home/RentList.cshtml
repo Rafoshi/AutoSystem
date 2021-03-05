@@ -22,6 +22,7 @@
             @Html.DisplayNameFor(model => model.ValueModel)
         </th>
         <th></th>
+        <th></th>
     </tr>
     @{ 
         int itemID = 0;
@@ -40,8 +41,10 @@
                 <p class="overflow"> @Html.DisplayFor(modelItem => item.ValueModel) </p>
             </td>
             <td>
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Finalizar aluguel</button>
-
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Pagar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Pagar com Taxa</button>
             </td>
         </tr>
         itemID = item.ID;
@@ -64,8 +67,36 @@
             </div>
             <div class="modal-footer">
                 <a href='@Url.Action("DeleteRent", "Home", new { rentID = itemID })'>
-    Deletar
-</a>
+                Deletar
+            </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Tax-->
+<div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Valor:</h4>
+            </div>
+            <div class="modal-body">
+                <p>@{
+                    int value = int.Parse(valueRent);
+                    int taxValue = value + ((value * 10) / 100);
+                    }
+                @taxValue
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href='@Url.Action("DeleteRentWithTax", "Home", new { rentID = itemID })'>
+                    Deletar com Taxa
+                </a>
             </div>
         </div>
 

@@ -25,10 +25,17 @@ namespace AutoSystem.Controllers
 
             return View(rent);
         }
+
         public ActionResult DeleteRent(int rentID)
         {
             queries.DeleteRent(rentID);
             return RedirectToAction("RentList");
+        }
+
+        public ActionResult DeleteRentWithTax(int rentID)
+        {
+            queries.DeleteRentWithTax(rentID);
+            return RedirectToAction("Index");
         }
 
         public ActionResult List()

@@ -41,13 +41,30 @@ namespace AutoSystem.Repostory
             con.DisconnectDB();
         }
 
+        public void DeleteRentWithTax(int rentID)
+        {
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM `db_auto`.`table_rent` WHERE (`RENT_ID` = @ID);", con.ConnectionDB());
+            cmd.Parameters.Add("@ID", MySqlDbType.VarChar).Value = rentID;
+
+            cmd.ExecuteNonQuery();
+            con.DisconnectDB();
+        }
+
         public void DeleteVehicle(int vehicleID)
         {
             MySqlCommand cmd = new MySqlCommand("DELETE FROM `db_auto`.`table_vehicles` WHERE (`VEHICLE_ID` = @ID);", con.ConnectionDB());
             cmd.Parameters.Add("@ID", MySqlDbType.VarChar).Value = vehicleID;
 
-            cmd.ExecuteNonQuery();
-            con.DisconnectDB();
+            try
+            {
+                cmd.ExecuteNonQuery();
+                con.DisconnectDB();
+            }
+            catch(Exception e)
+            {
+                string message = e.Message;
+                Console.WriteLine(message);
+            }
         }
 
         public void UpdateVehicle(Vehicle vehicle)
